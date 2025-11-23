@@ -8,7 +8,7 @@ Before starting make sure you have:
 git clone https://github.com/obsoletedevgit/www-podzol.git
 ```
 ```
-cd podzol
+cd www-podzol
 ```
 
 ## Step 2: Install dependencies
