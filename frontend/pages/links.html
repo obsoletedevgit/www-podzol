@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Links - Podzol</title>
+
+		<link rel="stylesheet" href="/css/styles.css" />
+		<link rel="stylesheet" href="/css/links.css" />
+	</head>
+	<body>
+		<header>
+			<div class="header-content">
+				<h1>
+					<span class="icon icon-sm icon-primary">
+						<img src="/media/icons/logo.svg" alt="" />
+					</span>
+					Podzol
+				</h1>
+				<nav>
+					<a href="/">Home</a>
+					<a href="/links" class="active">Links</a>
+					<a href="/admin">Admin</a>
+				</nav>
+			</div>
+		</header>
+
+		<div class="container">
+			<div id="errorContainer"></div>
+
+			<h1 class="text-center mb-20">My Links</h1>
+
+			<div id="linksContainer" class="links-container">
+				<div class="loading">
+					<div class="spinner"></div>
+					<p>Loading links...</p>
+				</div>
+			</div>
+		</div>
+
+		<script type="module" src="/js/links.js"></script>
+	</body>
+</html>

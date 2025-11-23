@@ -1,0 +1,47 @@
+.links-container {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.link-item {
+	background: var(--surface);
+	border-radius: 8px;
+	padding: 20px;
+	margin-bottom: 15px;
+	box-shadow: 0 2px 8px var(--shadow);
+	transition: transform 0.2s, box-shadow 0.2s;
+	cursor: pointer;
+	text-decoration: none;
+	display: block;
+	color: inherit;
+}
+
+.link-item:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px var(--shadow);
+}
+
+.link-title {
+	color: var(--primary);
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+
+.link-description {
+	color: var(--text-light);
+	font-size: 14px;
+}
+
+.link-url {
+	color: var(--primary-light);
+	font-size: 12px;
+	margin-top: 8px;
+	text-decoration: underline;
+}
+
+.no-links {
+	text-align: center;
+	padding: 60px 20px;
+	color: var(--text-light);
+}

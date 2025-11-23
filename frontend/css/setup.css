@@ -1,0 +1,71 @@
+.setup-container {
+	max-width: 600px;
+	margin: 50px auto;
+	padding: 20px;
+}
+
+.setup-card {
+	background: var(--surface);
+	border-radius: 12px;
+	padding: 40px;
+	box-shadow: 0 4px 12px var(--shadow);
+}
+
+.setup-header {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.setup-header h1 {
+	color: var(--primary);
+	font-size: 32px;
+	margin-bottom: 10px;
+}
+
+.setup-header p {
+	color: var(--text-light);
+}
+
+.privacy-options {
+	display: flex;
+	gap: 15px;
+	margin-top: 10px;
+}
+
+.privacy-option {
+	flex: 1;
+	padding: 15px;
+	border: 2px solid var(--border);
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.privacy-option:hover {
+	border-color: var(--primary);
+}
+
+.privacy-option input[type="radio"] {
+	width: auto;
+	margin-right: 8px;
+}
+
+.privacy-option.selected {
+	border-color: var(--primary);
+	background: #f0f7ed;
+}
+
+#privatePasswordGroup {
+	animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

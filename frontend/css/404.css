@@ -1,0 +1,31 @@
+.error-container {
+	text-align: center;
+	padding: 100px 20px;
+}
+
+.error-code {
+	font-size: 120px;
+	font-weight: bold;
+	color: var(--primary);
+	margin-bottom: 20px;
+}
+
+.error-message {
+	font-size: 24px;
+	color: var(--text);
+	margin-bottom: 30px;
+}
+
+.home-link {
+	display: inline-block;
+	background: var(--primary);
+	color: white;
+	padding: 12px 30px;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background 0.2s;
+}
+
+.home-link:hover {
+	background: var(--primary-light);
+}

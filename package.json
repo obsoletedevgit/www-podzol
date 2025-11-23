@@ -1,29 +1,30 @@
 {
-  "name": "www-template",
-  "version": "1.0.0",
-  "description": "template nodejs site",
-  "homepage": "https://github.com/obsoletedevgit/www-template#readme",
-  "bugs": {
-    "url": "https://github.com/obsoletedevgit/www-template/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/obsoletedevgit/www-template.git"
-  },
-  "license": "ISC",
-  "author": "",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/server.js",
-    "dev": "nodemon backend/server.js"
-  },
-  "dependencies": {
-    "dotenv": "^17.2.2",
-    "express": "^5.1.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
-  }
+	"name": "podzol",
+	"version": "1.0.0",
+	"description": "Privacy-focused personal social media platform",
+	"type": "module",
+	"main": "backend/server.js",
+	"scripts": {
+		"start": "node backend/server.js",
+		"dev": "nodemon backend/server.js"
+	},
+	"keywords": [
+		"social-media",
+		"privacy",
+		"self-hosted"
+	],
+	"author": "",
+	"license": "MIT",
+	"dependencies": {
+		"bcrypt": "^5.1.1",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"express-fileupload": "^1.4.3",
+		"express-session": "^1.17.3",
+		"nodemailer": "^6.9.7",
+		"sqlite3": "^5.1.6"
+	},
+	"devDependencies": {
+		"nodemon": "^3.0.2"
+	}
 }

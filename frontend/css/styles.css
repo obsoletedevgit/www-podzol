@@ -1,0 +1,290 @@
+:root {
+	--primary: #2d5016;
+	--primary-light: #4a7c2a;
+	--primary-dark: #1a3009;
+	--secondary: #8b4513;
+	--bg: #f5f5dc;
+	--surface: #ffffff;
+	--text: #2c2c2c;
+	--text-light: #666;
+	--border: #d4d4d4;
+	--error: #c53030;
+	--success: #38a169;
+	--shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, sans-serif;
+	background: var(--bg);
+	color: var(--text);
+	line-height: 1.6;
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+header {
+	background: var(--surface);
+	border-bottom: 3px solid var(--primary);
+	box-shadow: 0 2px 4px var(--shadow);
+	margin-bottom: 30px;
+}
+
+.header-content {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+nav {
+	display: flex;
+	gap: 15px;
+	margin-top: 15px;
+}
+
+nav a {
+	color: var(--primary);
+	text-decoration: none;
+	padding: 8px 16px;
+	border-radius: 5px;
+	transition: background 0.2s;
+}
+
+nav a:hover {
+	background: var(--primary);
+	color: white;
+}
+
+nav a.active {
+	background: var(--primary);
+	color: white;
+}
+
+button,
+.btn {
+	background: var(--primary);
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background 0.2s;
+}
+
+button:hover,
+.btn:hover {
+	background: var(--primary-light);
+}
+
+button:disabled {
+	background: var(--text-light);
+	cursor: not-allowed;
+}
+
+.btn-secondary {
+	background: var(--secondary);
+}
+
+.btn-secondary:hover {
+	background: #a0522d;
+}
+
+.btn-danger {
+	background: var(--error);
+}
+
+.btn-danger:hover {
+	background: #e53e3e;
+}
+
+input,
+textarea,
+select {
+	width: 100%;
+	padding: 10px;
+	border: 2px solid var(--border);
+	border-radius: 5px;
+	font-size: 16px;
+	font-family: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+	border-color: var(--primary);
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 500;
+	color: var(--text);
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.card {
+	background: var(--surface);
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 2px 8px var(--shadow);
+	margin-bottom: 20px;
+}
+
+.alert {
+	padding: 15px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.alert-error {
+	background: #fed7d7;
+	color: var(--error);
+	border: 1px solid var(--error);
+}
+
+.alert-success {
+	background: #c6f6d5;
+	color: var(--success);
+	border: 1px solid var(--success);
+}
+
+.loading {
+	text-align: center;
+	padding: 40px;
+	color: var(--text-light);
+}
+
+.spinner {
+	border: 3px solid var(--border);
+	border-top: 3px solid var(--primary);
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	animation: spin 1s linear infinite;
+	margin: 0 auto;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.text-center {
+	text-align: center;
+}
+
+.mt-20 {
+	margin-top: 20px;
+}
+
+.mb-20 {
+	margin-bottom: 20px;
+}
+
+.hidden {
+	display: none;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.gap-10 {
+	gap: 10px;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	line-height: 1;
+}
+
+.icon-xs svg {
+	width: 12px;
+	height: 12px;
+}
+.icon-sm svg {
+	width: 16px;
+	height: 16px;
+}
+.icon-md svg {
+	width: 20px;
+	height: 20px;
+}
+.icon-lg svg {
+	width: 28px;
+	height: 28px;
+}
+.icon-xl svg {
+	width: 36px;
+	height: 36px;
+}
+
+.icon svg {
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+	fill: currentColor;
+}
+
+.icon-circle {
+	border-radius: 50%;
+	background: var(--primary);
+	color: white;
+	padding: 6px;
+}
+
+.icon-primary {
+	color: var(--primary);
+}
+.icon-secondary {
+	color: var(--secondary);
+}
+.icon-success {
+	color: var(--success);
+}
+.icon-error {
+	color: var(--error);
+}
+.icon-muted {
+	color: var(--text-light);
+}
+
+.icon + span,
+span + .icon {
+	margin-left: 6px;
+	margin-right: 6px;
+}
+
+.btn .icon svg {
+	width: 18px;
+	height: 18px;
+	margin-right: 5px;
+}

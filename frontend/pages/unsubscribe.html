@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Unsubscribe - Podzol</title>
+		<link rel="stylesheet" href="/css/styles.css" />
+	</head>
+	<body>
+		<header>
+			<div class="header-content">
+				<h1>
+					<span class="icon icon-sm icon-primary">
+						<img src="/media/icons/logo.svg" alt="" />
+					</span>
+					Podzol
+				</h1>
+				<nav>
+					<a href="/">Home</a>
+				</nav>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="card" style="max-width: 500px; margin: 50px auto">
+				<div id="unsubscribeContent">
+					<div class="loading">
+						<div class="spinner"></div>
+						<p>Processing your request...</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="module">
+			import { fetchAPI } from "/js/utils/api.js";
+
+			document.addEventListener("DOMContentLoaded", async () => {
+				const urlParams = new URLSearchParams(window.location.search);
+				const token = urlParams.get("token");
+				const container = document.getElementById("unsubscribeContent");
+
+				if (!token) {
+					container.innerHTML = `
+            <div class="text-center">
+              <h2>Invalid Link</h2>
+              <p style="color: var(--text-light); margin-top: 10px;">
+                This unsubscribe link is invalid or expired.
+              </p>
+              <a href="/" class="btn" style="margin-top: 20px;">
+                Go to Home
+              </a>
+            </div>
+          `;
+					return;
+				}
+
+				try {
+					await fetchAPI(`/unsubscribe?token=${token}`);
+
+					container.innerHTML = `
+            <div class="text-center">
+              <h2>Successfully Unsubscribed</h2>
+              <p style="color: var(--text-light); margin-top: 10px;">
+                You've been unsubscribed from email notifications.
+              </p>
+              <p style="color: var(--text-light); margin-top: 10px;">
+                We're sorry to see you go! You can always resubscribe 
+                from the homepage if you change your mind.
+              </p>
+              <a href="/" class="btn" style="margin-top: 20px;">
+                Go to Home
+              </a>
+            </div>
+          `;
+				} catch (error) {
+					container.innerHTML = `
+            <div class="text-center">
+              <h2>Error</h2>
+              <p style="color: var(--error); margin-top: 10px;">
+                ${error.message || "Failed to process unsubscribe request"}
+              </p>
+              <a href="/" class="btn" style="margin-top: 20px;">
+                Go to Home
+              </a>
+            </div>
+          `;
+				}
+			});
+		</script>
+	</body>
+</html>

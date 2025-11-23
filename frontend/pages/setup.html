@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Setup - Podzol</title>
+
+		<link rel="stylesheet" href="/css/styles.css" />
+		<link rel="stylesheet" href="/css/setup.css" />
+	</head>
+	<body>
+		<div class="setup-container">
+			<div class="setup-card">
+				<div class="setup-header">
+					<h1>
+						<span class="icon icon-sm icon-primary">
+							<img src="/media/icons/logo.svg" alt="" />
+						</span>
+						Welcome to Podzol
+					</h1>
+					<p>Let's set up your profile</p>
+				</div>
+
+				<div id="errorContainer"></div>
+
+				<form id="setupForm">
+					<div class="form-group">
+						<label for="username">Username *</label>
+						<input
+							type="text"
+							id="username"
+							name="username"
+							required
+							placeholder="Your username"
+						/>
+					</div>
+
+					<div class="form-group">
+						<label for="biography">Biography</label>
+						<textarea
+							id="biography"
+							name="biography"
+							rows="4"
+							placeholder="Tell visitors about yourself..."
+						></textarea>
+					</div>
+
+					<div class="form-group">
+						<label for="pronouns">Pronouns (Optional)</label>
+						<input
+							type="text"
+							id="pronouns"
+							name="pronouns"
+							placeholder="e.g., they/them"
+						/>
+					</div>
+
+					<div class="form-group">
+						<label for="age">Age (Optional)</label>
+						<input
+							type="number"
+							id="age"
+							name="age"
+							min="1"
+							max="150"
+							placeholder="Your age"
+						/>
+					</div>
+
+					<div class="form-group">
+						<label for="location">Location (Optional)</label>
+						<input
+							type="text"
+							id="location"
+							name="location"
+							placeholder="e.g., Earth"
+						/>
+					</div>
+
+					<div class="form-group">
+						<label>Privacy Mode *</label>
+						<div class="privacy-options">
+							<label class="privacy-option selected">
+								<input
+									type="radio"
+									name="privacyMode"
+									value="public"
+									checked
+								/>
+								<div>
+									<strong>Public</strong>
+									<p
+										style="
+											font-size: 14px;
+											color: var(--text-light);
+										"
+									>
+										Anyone can view your profile
+									</p>
+								</div>
+							</label>
+							<label class="privacy-option">
+								<input
+									type="radio"
+									name="privacyMode"
+									value="private"
+								/>
+								<div>
+									<strong>Private</strong>
+									<p
+										style="
+											font-size: 14px;
+											color: var(--text-light);
+										"
+									>
+										Requires a password to view
+									</p>
+								</div>
+							</label>
+						</div>
+					</div>
+
+					<div id="privatePasswordGroup" class="form-group hidden">
+						<label for="privatePassword"
+							>Private Access Password *</label
+						>
+						<input
+							type="password"
+							id="privatePassword"
+							name="privatePassword"
+							placeholder="Password for visitors"
+						/>
+						<small style="color: var(--text-light)">
+							Visitors will need this password to view your
+							profile
+						</small>
+					</div>
+
+					<div class="form-group">
+						<label for="adminPassword">Admin Password *</label>
+						<input
+							type="password"
+							id="adminPassword"
+							name="adminPassword"
+							required
+							minlength="8"
+							placeholder="Your admin password"
+						/>
+						<small style="color: var(--text-light)">
+							At least 8 characters. You'll use this to manage
+							your Podzol.
+						</small>
+					</div>
+
+					<button type="submit" class="btn" style="width: 100%">
+						Complete Setup
+					</button>
+				</form>
+			</div>
+		</div>
+
+		<script type="module" src="/js/setup.js"></script>
+	</body>
+</html>
