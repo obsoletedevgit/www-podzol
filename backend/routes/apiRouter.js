@@ -2,30 +2,36 @@ import express from "express";
 import authMiddleware from "../middleware/authMiddleware.js";
 import privateAccessMiddleware from "../middleware/privateAccessMiddleware.js";
 import {
-	setupProfile,
-	adminLogin,
-	adminLogout,
-	verifyPrivateAccess,
-	checkSetup,
+    setupProfile,
+    adminLogin,
+    adminLogout,
+    verifyPrivateAccess,
+    checkSetup,
 } from "../controllers/authController.js";
 import {
-	getProfile,
-	updateProfile,
-	uploadProfilePicture,
+    getProfile,
+    updateProfile,
+    uploadProfilePicture,
 } from "../controllers/profileController.js";
 import {
-	getPosts,
-	getPost,
-	createPost,
-	updatePost,
-	deletePost,
+    getPosts,
+    getPost,
+    createPost,
+    updatePost,
+    deletePost,
 } from "../controllers/postController.js";
 import {
-	subscribe,
-	unsubscribe,
-	unsubscribeUser,
-	getSubscribers,
+    subscribe,
+    unsubscribe,
+    unsubscribeUser,
+    getSubscribers,
 } from "../controllers/subscriptionController.js";
+import {
+    getComments,
+    createComment,
+    getAllComments,
+    deleteComment,
+} from "../controllers/commentController.js";
 
 const router = express.Router();
 
@@ -39,6 +45,12 @@ router.get("/profile", privateAccessMiddleware, getProfile);
 
 router.get("/posts", privateAccessMiddleware, getPosts);
 router.get("/posts/:id", privateAccessMiddleware, getPost);
+
+router.get("/posts/:postId/comments", privateAccessMiddleware, getComments);
+router.post("/posts/:postId/comments", privateAccessMiddleware, createComment);
+
+router.get("/comments", authMiddleware, getAllComments);
+router.delete("/comments/:id", authMiddleware, deleteComment);
 
 router.post("/subscribe", subscribe);
 router.get("/unsubscribe", unsubscribe);

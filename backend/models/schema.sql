@@ -51,3 +51,14 @@ CREATE TABLE IF NOT EXISTS mail_config (
     from_email TEXT,
     from_name TEXT
 );
+
+-- Comments
+CREATE TABLE IF NOT EXISTS comments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  post_id INTEGER NOT NULL,
+  name TEXT NOT NULL,
+  content TEXT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  is_approved INTEGER DEFAULT 1,
+  FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
+);
