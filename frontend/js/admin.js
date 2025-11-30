@@ -207,7 +207,7 @@ async function loadPosts() {
 function displayPostsList(posts) {
     const container = document.getElementById("postsList");
 
-    if (posts.length === 0) {
+    if (!posts || posts.length === 0) {
         container.innerHTML = `
       <div class="text-center" style="padding: 40px; color: var(--text-light);">
         <p>No posts yet</p>
@@ -217,31 +217,86 @@ function displayPostsList(posts) {
     }
 
     container.innerHTML = posts
-        .map(
-            (post) => `
-    <div class="post-item">
-      <div class="post-item-header">
-        <div>
-          <span class="post-type">${post.type}</span>
-          ${post.title ? `<h3>${post.title}</h3>` : ""}
-          <div class="post-date">${formatDate(post.created_at)}</div>
+        .map((post) => {
+            const date = formatDate(post.created_at);
+            const typeBadge = `<span class="post-type">${post.type}</span>`;
+
+            // Type‑specific display
+            let typeSpecificHtml = "";
+
+            switch (post.type) {
+                case "status":
+                    typeSpecificHtml = `
+            <p>${escapeHtml(post.content)}</p>
+          `;
+                    break;
+
+                case "longform":
+                    typeSpecificHtml = `
+            <h3>${escapeHtml(post.title || "Untitled")}</h3>
+            <p>${escapeHtml(post.content?.substring(0, 150) || "")}${
+                        post.content?.length > 150 ? "…" : ""
+                    }</p>
+          `;
+                    break;
+
+                case "image":
+                    const images = post.images?.length
+                        ? post.images
+                              .map(
+                                  (img) => `
+              <img src="${img}" alt="Post image" class="post-thumbnail"
+                   style="height:80px;object-fit:cover;border-radius:4px;margin-right:6px;">`
+                              )
+                              .join("")
+                        : "<small>No images</small>";
+
+                    typeSpecificHtml = `
+            <h3>${escapeHtml(post.title || "Image Post")}</h3>
+            <p>${escapeHtml(post.content || "")}</p>
+            <div class="post-image-list">${images}</div>
+          `;
+                    break;
+
+                case "link":
+                    typeSpecificHtml = `
+            <h3>${escapeHtml(post.link_title || "Link")}</h3>
+            <a href="${escapeHtml(post.link_url)}" target="_blank"
+              style="color:var(--primary);text-decoration:none;">
+              ${escapeHtml(post.link_url)}
+            </a>
+            ${
+                post.link_description
+                    ? `<p>${escapeHtml(post.link_description)}</p>`
+                    : ""
+            }
+          `;
+                    break;
+
+                default:
+                    typeSpecificHtml = `
+            <h3>${escapeHtml(post.title || "Untitled")}</h3>
+            <p>${escapeHtml(post.content || "")}</p>
+          `;
+            }
+
+            return `
+        <div class="post-item">
+          <div class="post-item-header">
+            <div>
+              ${typeBadge}
+              <div class="post-date">${date}</div>
+            </div>
+            <div class="post-item-actions">
+              <button class="btn btn-sm btn-danger" onclick="deletePost(${post.id})">Delete</button>
+            </div>
+          </div>
+          <div class="post-body">
+            ${typeSpecificHtml}
+          </div>
         </div>
-        <div class="post-item-actions">
-          <button class="btn btn-sm btn-danger" onclick="deletePost(${
-              post.id
-          })">Delete</button>
-        </div>
-      </div>
-      ${
-          post.content
-              ? `<p>${post.content.substring(0, 150)}${
-                    post.content.length > 150 ? "..." : ""
-                }</p>`
-              : ""
-      }
-    </div>
-  `
-        )
+      `;
+        })
         .join("");
 }
 
