@@ -1,94 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Podzol</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Podzol</title>
 
-		<link
-			rel="shortcut icon"
-			href="/media/favicon.ico"
-			type="image/x-icon"
-		/>
-		<link rel="stylesheet" href="/css/styles.css" />
-		<link rel="stylesheet" href="/css/index.css" />
-	</head>
-	<body>
-		<header>
-			<div class="header-content">
-				<h1>
-					<span class="icon icon-sm icon-primary">
-						<img src="/media/icons/logo.svg" alt="" />
-					</span>
-					Podzol
-				</h1>
-				<nav>
-					<a href="/" class="active">Home</a>
-					<a href="/links">Links</a>
-					<a href="/admin">Admin</a>
-				</nav>
-			</div>
-		</header>
+        <link
+            rel="shortcut icon"
+            href="/media/favicon.ico"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="/css/index.css" />
+    </head>
+    <body>
+        <header>
+            <div class="header-content">
+                <h1>
+                    <span class="icon icon-sm icon-primary">
+                        <img src="/media/icons/logo.svg" alt="" />
+                    </span>
+                    Podzol
+                </h1>
+                <nav>
+                    <a href="/" class="active">Home</a>
+                    <a href="/links">Links</a>
+                    <a href="/admin">Admin</a>
+                </nav>
+            </div>
+        </header>
 
-		<div class="container">
-			<div id="errorContainer"></div>
+        <div class="container">
+            <div id="errorContainer"></div>
 
-			<div class="profile-header">
-				<img
-					id="profilePicture"
-					alt="Profile Picture"
-					class="profile-picture"
-				/>
-				<h1 id="profileName">Loading...</h1>
-				<div id="profileMeta" class="profile-meta"></div>
-				<p id="profileBio" class="profile-bio"></p>
+            <div class="profile-header">
+                <img
+                    id="profilePicture"
+                    alt="Profile Picture"
+                    class="profile-picture"
+                />
+                <h1 id="profileName">Loading...</h1>
+                <div id="profileMeta" class="profile-meta"></div>
+                <p id="profileBio" class="profile-bio"></p>
 
-				<form id="subscribeForm" class="subscribe-form">
-					<input
-						type="email"
-						id="subscribeEmail"
-						placeholder="Subscribe via email"
-						required
-					/>
-					<button type="submit" class="btn">Subscribe</button>
-				</form>
-			</div>
+                <form id="subscribeForm" class="subscribe-form">
+                    <input
+                        type="email"
+                        id="subscribeEmail"
+                        placeholder="Subscribe via email"
+                        required
+                    />
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
 
-			<div id="postsContainer" class="posts-container">
-				<div class="loading">
-					<div class="spinner"></div>
-					<p>Loading posts...</p>
-				</div>
-			</div>
-		</div>
+            <div id="postsContainer" class="posts-container">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading posts...</p>
+                </div>
+            </div>
+        </div>
 
-		<!-- Private Access Modal -->
-		<div id="privateAccessModal" class="modal">
-			<div class="modal-content">
-				<h2>Private Profile</h2>
-				<p style="margin-bottom: 20px; color: var(--text-light)">
-					This profile is private. Please enter the password to
-					continue.
-				</p>
+        <!-- Private Access Modal -->
+        <div id="privateAccessModal" class="modal">
+            <div class="modal-content">
+                <h2>Private Profile</h2>
+                <p style="margin-bottom: 20px; color: var(--text-light)">
+                    This profile is private. Please enter the password to
+                    continue.
+                </p>
 
-				<div id="privateAccessError"></div>
+                <div id="privateAccessError"></div>
 
-				<form id="privateAccessForm">
-					<div class="form-group">
-						<input
-							type="password"
-							id="privatePassword"
-							placeholder="Enter password"
-							required
-						/>
-					</div>
-					<button type="submit" class="btn" style="width: 100%">
-						Access Profile
-					</button>
-				</form>
-			</div>
-		</div>
+                <form id="privateAccessForm">
+                    <div class="form-group">
+                        <input
+                            type="password"
+                            id="privatePassword"
+                            placeholder="Enter password"
+                            required
+                        />
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%">
+                        Access Profile
+                    </button>
+                </form>
+            </div>
+        </div>
 
-		<script type="module" src="/js/index.js"></script>
-	</body>
+        <!-- Lightbox Modal -->
+        <div id="lightboxModal" class="modal">
+            <div
+                class="modal-content"
+                style="
+                    background: transparent;
+                    box-shadow: none;
+                    padding: 0;
+                    max-width: 90%;
+                    width: auto;
+                "
+            >
+                <img
+                    id="lightboxImage"
+                    style="
+                        max-width: 100%;
+                        max-height: 90vh;
+                        border-radius: 8px;
+                    "
+                />
+            </div>
+        </div>
+
+        <script type="module" src="/js/index.js"></script>
+    </body>
 </html>
