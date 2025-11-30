@@ -1,446 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Admin - Podzol</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin - Podzol</title>
 
-		<link
-			rel="shortcut icon"
-			href="/media/favicon.ico"
-			type="image/x-icon"
-		/>
-		<link rel="stylesheet" href="/css/styles.css" />
-		<link rel="stylesheet" href="/css/admin.css" />
-	</head>
-	<body>
-		<header>
-			<div class="header-content">
-				<h1>
-					<span class="icon icon-sm icon-primary">
-						<img src="/media/icons/logo.svg" alt="" />
-					</span>
-					Podzol
-				</h1>
-				<nav>
-					<a href="/">Home</a>
-					<a href="/links">Links</a>
-					<a href="/admin" class="active">Admin</a>`
-				</nav>
-			</div>
-		</header>
+        <link
+            rel="shortcut icon"
+            href="/media/favicon.ico"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="/css/admin.css" />
+    </head>
+    <body>
+        <header>
+            <div class="header-content">
+                <h1>
+                    <span class="icon icon-sm icon-primary">
+                        <img src="/media/icons/logo.svg" alt="" />
+                    </span>
+                    Podzol
+                </h1>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/links">Links</a>
+                    <a href="/admin" class="active">Admin</a>`
+                </nav>
+            </div>
+        </header>
 
-		<div class="container admin-container">
-			<!-- Login Section -->
-			<div id="loginSection">
-				<div class="card" style="max-width: 400px; margin: 50px auto">
-					<h2 class="text-center mb-20">Admin Login</h2>
+        <div class="container admin-container">
+            <!-- Login Section -->
+            <div id="loginSection">
+                <div class="card" style="max-width: 400px; margin: 50px auto">
+                    <h2 class="text-center mb-20">Admin Login</h2>
 
-					<div id="loginError"></div>
+                    <div id="loginError"></div>
 
-					<form id="loginForm">
-						<div class="form-group">
-							<label for="adminPassword">Admin Password</label>
-							<input
-								type="password"
-								id="adminPassword"
-								required
-								placeholder="Enter your admin password"
-							/>
-						</div>
-						<button type="submit" class="btn" style="width: 100%">
-							Login
-						</button>
-					</form>
-				</div>
-			</div>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="adminPassword">Admin Password</label>
+                            <input
+                                type="password"
+                                id="adminPassword"
+                                required
+                                placeholder="Enter your admin password"
+                            />
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%">
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
 
-			<!-- Admin Section -->
-			<div id="adminSection" class="hidden">
-				<div class="admin-header">
-					<h1>Admin Dashboard</h1>
-					<button id="logoutBtn" class="btn btn-secondary">
-						Logout
-					</button>
-				</div>
+            <!-- Admin Section -->
+            <div id="adminSection" class="hidden">
+                <div class="admin-header">
+                    <h1>Admin Dashboard</h1>
+                    <button id="logoutBtn" class="btn btn-secondary">
+                        Logout
+                    </button>
+                </div>
 
-				<div id="errorContainer"></div>
+                <div id="errorContainer"></div>
 
-				<div class="admin-tabs">
-					<button class="tab-btn active" data-tab="posts">
-						Posts
-					</button>
-					<button class="tab-btn" data-tab="profile">Profile</button>
-					<button class="tab-btn" data-tab="subscribers">
-						Subscribers
-					</button>
-					<button class="tab-btn" data-tab="settings">
-						Settings
-					</button>
-				</div>
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="posts">
+                        Posts
+                    </button>
+                    <button class="tab-btn" data-tab="comments">
+                        Comments
+                    </button>
+                    <button class="tab-btn" data-tab="profile">Profile</button>
+                    <button class="tab-btn" data-tab="subscribers">
+                        Subscribers
+                    </button>
+                    <button class="tab-btn" data-tab="settings">
+                        Settings
+                    </button>
+                </div>
 
-				<!-- Posts Tab -->
-				<div id="postsTab" class="tab-content active">
-					<div class="card">
-						<h2>Create New Post</h2>
+                <!-- Posts Tab -->
+                <div id="postsTab" class="tab-content active">
+                    <div class="card">
+                        <h2>Create New Post</h2>
 
-						<div class="post-type-selector">
-							<button
-								type="button"
-								class="post-type-btn"
-								data-type="status"
-							>
-								<span class="icon icon-sm icon-primary">
-									<img src="/media/icons/status.svg" alt="" />
-								</span>
-								Status
-							</button>
-							<button
-								type="button"
-								class="post-type-btn"
-								data-type="longform"
-							>
-								<span class="icon icon-sm icon-primary">
-									<img
-										src="/media/icons/long_form.svg"
-										alt=""
-									/>
-								</span>
-								Long Form
-							</button>
-							<button
-								type="button"
-								class="post-type-btn"
-								data-type="image"
-							>
-								<span class="icon icon-sm icon-primary">
-									<img src="/media/icons/image.svg" alt="" />
-								</span>
-								Image
-							</button>
-							<button
-								type="button"
-								class="post-type-btn"
-								data-type="link"
-							>
-								<span class="icon icon-sm icon-primary">
-									<img src="/media/icons/link.svg" alt="" />
-								</span>
-								Link
-							</button>
-						</div>
+                        <div class="post-type-selector">
+                            <button
+                                type="button"
+                                class="post-type-btn"
+                                data-type="status"
+                            >
+                                <span class="icon icon-sm icon-primary">
+                                    <img src="/media/icons/status.svg" alt="" />
+                                </span>
+                                Status
+                            </button>
+                            <button
+                                type="button"
+                                class="post-type-btn"
+                                data-type="longform"
+                            >
+                                <span class="icon icon-sm icon-primary">
+                                    <img
+                                        src="/media/icons/long_form.svg"
+                                        alt=""
+                                    />
+                                </span>
+                                Long Form
+                            </button>
+                            <button
+                                type="button"
+                                class="post-type-btn"
+                                data-type="image"
+                            >
+                                <span class="icon icon-sm icon-primary">
+                                    <img src="/media/icons/image.svg" alt="" />
+                                </span>
+                                Image
+                            </button>
+                            <button
+                                type="button"
+                                class="post-type-btn"
+                                data-type="link"
+                            >
+                                <span class="icon icon-sm icon-primary">
+                                    <img src="/media/icons/link.svg" alt="" />
+                                </span>
+                                Link
+                            </button>
+                        </div>
 
-						<form id="createPostForm">
-							<!-- Status Fields -->
-							<div id="statusFields" class="post-form-fields">
-								<div class="form-group">
-									<label for="statusContent"
-										>Status Message</label
-									>
-									<textarea
-										id="statusContent"
-										rows="3"
-										placeholder="What's on your mind?"
-									></textarea>
-								</div>
-							</div>
+                        <form id="createPostForm">
+                            <!-- Status Fields -->
+                            <div id="statusFields" class="post-form-fields">
+                                <div class="form-group">
+                                    <label for="statusContent"
+                                        >Status Message</label
+                                    >
+                                    <textarea
+                                        id="statusContent"
+                                        rows="3"
+                                        placeholder="What's on your mind?"
+                                    ></textarea>
+                                </div>
+                            </div>
 
-							<!-- Long Form Fields -->
-							<div id="longformFields" class="post-form-fields">
-								<div class="form-group">
-									<label for="longformTitle">Title</label>
-									<input
-										type="text"
-										id="longformTitle"
-										placeholder="Post title"
-									/>
-								</div>
-								<div class="form-group">
-									<label for="longformContent">Content</label>
-									<textarea
-										id="longformContent"
-										rows="10"
-										placeholder="Write your post content..."
-									></textarea>
-								</div>
-							</div>
+                            <!-- Long Form Fields -->
+                            <div id="longformFields" class="post-form-fields">
+                                <div class="form-group">
+                                    <label for="longformTitle">Title</label>
+                                    <input
+                                        type="text"
+                                        id="longformTitle"
+                                        placeholder="Post title"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="longformContent">Content</label>
+                                    <textarea
+                                        id="longformContent"
+                                        rows="10"
+                                        placeholder="Write your post content..."
+                                    ></textarea>
+                                </div>
+                            </div>
 
-							<!-- Image Fields -->
-							<div id="imageFields" class="post-form-fields">
-								<div class="form-group">
-									<label for="imageTitle"
-										>Title (Optional)</label
-									>
-									<input
-										type="text"
-										id="imageTitle"
-										placeholder="Image title"
-									/>
-								</div>
-								<div class="form-group">
-									<label for="imageContent"
-										>Caption (Optional)</label
-									>
-									<textarea
-										id="imageContent"
-										rows="3"
-										placeholder="Image caption"
-									></textarea>
-								</div>
-								<div class="form-group">
-									<label for="imageFiles">Images</label>
-									<input
-										type="file"
-										id="imageFiles"
-										accept="image/*"
-										multiple
-									/>
-									<small style="color: var(--text-light)">
-										You can select multiple images
-									</small>
-								</div>
-							</div>
+                            <!-- Image Fields -->
+                            <div id="imageFields" class="post-form-fields">
+                                <div class="form-group">
+                                    <label for="imageTitle"
+                                        >Title (Optional)</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="imageTitle"
+                                        placeholder="Image title"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="imageContent"
+                                        >Caption (Optional)</label
+                                    >
+                                    <textarea
+                                        id="imageContent"
+                                        rows="3"
+                                        placeholder="Image caption"
+                                    ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="imageFiles">Images</label>
+                                    <input
+                                        type="file"
+                                        id="imageFiles"
+                                        accept="image/*"
+                                        multiple
+                                    />
+                                    <small style="color: var(--text-light)">
+                                        You can select multiple images
+                                    </small>
+                                </div>
+                            </div>
 
-							<!-- Link Fields -->
-							<div id="linkFields" class="post-form-fields">
-								<div class="form-group">
-									<label for="linkTitle">Link Title</label>
-									<input
-										type="text"
-										id="linkTitle"
-										placeholder="Title for the link"
-									/>
-								</div>
-								<div class="form-group">
-									<label for="linkUrl">URL</label>
-									<input
-										type="url"
-										id="linkUrl"
-										placeholder="https://example.com"
-									/>
-								</div>
-								<div class="form-group">
-									<label for="linkDescription"
-										>Description (Optional)</label
-									>
-									<textarea
-										id="linkDescription"
-										rows="3"
-										placeholder="Describe this link"
-									></textarea>
-								</div>
-							</div>
+                            <!-- Link Fields -->
+                            <div id="linkFields" class="post-form-fields">
+                                <div class="form-group">
+                                    <label for="linkTitle">Link Title</label>
+                                    <input
+                                        type="text"
+                                        id="linkTitle"
+                                        placeholder="Title for the link"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkUrl">URL</label>
+                                    <input
+                                        type="url"
+                                        id="linkUrl"
+                                        placeholder="https://example.com"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkDescription"
+                                        >Description (Optional)</label
+                                    >
+                                    <textarea
+                                        id="linkDescription"
+                                        rows="3"
+                                        placeholder="Describe this link"
+                                    ></textarea>
+                                </div>
+                            </div>
 
-							<button type="submit" class="btn">
-								Create Post
-							</button>
-						</form>
-					</div>
+                            <button type="submit" class="btn">
+                                Create Post
+                            </button>
+                        </form>
+                    </div>
 
-					<div class="card mt-20">
-						<h2>All Posts</h2>
-						<div id="postsList" class="posts-list">
-							<div class="loading">
-								<div class="spinner"></div>
-								<p>Loading posts...</p>
-							</div>
-						</div>
-					</div>
-				</div>
+                    <div class="card mt-20">
+                        <h2>All Posts</h2>
+                        <div id="postsList" class="posts-list">
+                            <div class="loading">
+                                <div class="spinner"></div>
+                                <p>Loading posts...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-				<!-- Profile Tab -->
-				<div id="profileTab" class="tab-content">
-					<div class="card">
-						<h2>Profile Settings</h2>
+                <!-- Profile Tab -->
+                <div id="profileTab" class="tab-content">
+                    <div class="card">
+                        <h2>Profile Settings</h2>
 
-						<form id="profileSettingsForm">
-							<div class="form-group">
-								<label for="editUsername">Username</label>
-								<input type="text" id="editUsername" required />
-							</div>
+                        <form id="profileSettingsForm">
+                            <div class="form-group">
+                                <label for="editUsername">Username</label>
+                                <input type="text" id="editUsername" required />
+                            </div>
 
-							<div class="form-group">
-								<label for="editBiography">Biography</label>
-								<textarea
-									id="editBiography"
-									rows="4"
-								></textarea>
-							</div>
+                            <div class="form-group">
+                                <label for="editBiography">Biography</label>
+                                <textarea
+                                    id="editBiography"
+                                    rows="4"
+                                ></textarea>
+                            </div>
 
-							<div class="form-group">
-								<label for="editPronouns">Pronouns</label>
-								<input type="text" id="editPronouns" />
-							</div>
+                            <div class="form-group">
+                                <label for="editPronouns">Pronouns</label>
+                                <input type="text" id="editPronouns" />
+                            </div>
 
-							<div class="form-group">
-								<label for="editAge">Age</label>
-								<input type="number" id="editAge" />
-							</div>
+                            <div class="form-group">
+                                <label for="editAge">Age</label>
+                                <input type="number" id="editAge" />
+                            </div>
 
-							<div class="form-group">
-								<label for="editLocation">Location</label>
-								<input type="text" id="editLocation" />
-							</div>
+                            <div class="form-group">
+                                <label for="editLocation">Location</label>
+                                <input type="text" id="editLocation" />
+                            </div>
 
-							<button type="submit" class="btn">
-								Update Profile
-							</button>
-						</form>
-					</div>
+                            <button type="submit" class="btn">
+                                Update Profile
+                            </button>
+                        </form>
+                    </div>
 
-					<div class="card mt-20">
-						<h2>Profile Picture</h2>
+                    <div class="card mt-20">
+                        <h2>Profile Picture</h2>
 
-						<form id="profilePictureForm">
-							<div class="form-group">
-								<label for="profilePictureInput"
-									>Upload New Picture</label
-								>
-								<input
-									type="file"
-									id="profilePictureInput"
-									accept="image/*"
-									required
-								/>
-							</div>
+                        <form id="profilePictureForm">
+                            <div class="form-group">
+                                <label for="profilePictureInput"
+                                    >Upload New Picture</label
+                                >
+                                <input
+                                    type="file"
+                                    id="profilePictureInput"
+                                    accept="image/*"
+                                    required
+                                />
+                            </div>
 
-							<button type="submit" class="btn">
-								Upload Picture
-							</button>
-						</form>
-					</div>
-				</div>
+                            <button type="submit" class="btn">
+                                Upload Picture
+                            </button>
+                        </form>
+                    </div>
+                </div>
 
-				<!-- Subscribers Tab -->
-				<div id="subscribersTab" class="tab-content">
-					<div class="card">
-						<h2>Subscribers</h2>
+                <!-- Subscribers Tab -->
+                <div id="subscribersTab" class="tab-content">
+                    <div class="card">
+                        <h2>Subscribers</h2>
 
-						<div id="subscribersList" class="subscribers-list">
-							<div class="loading">
-								<div class="spinner"></div>
-								<p>Loading subscribers...</p>
-							</div>
-						</div>
-					</div>
-				</div>
+                        <div id="subscribersList" class="subscribers-list">
+                            <div class="loading">
+                                <div class="spinner"></div>
+                                <p>Loading subscribers...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-				<!-- Settings Tab -->
-				<div id="settingsTab" class="tab-content">
-					<div class="card">
-						<h2>Profile Settings</h2>
-						<form id="settingsProfileForm">
-							<div class="form-group">
-								<label>Username</label>
-								<input type="text" id="setUsername" required />
-							</div>
+                <!-- Comments Tab -->
+                <div id="commentsTab" class="tab-content">
+                    <div class="card">
+                        <h2>Comments</h2>
+                        <div id="commentsList" class="comments-list">
+                            <div class="loading">
+                                <div class="spinner"></div>
+                                <p>Loading comments...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-							<div class="form-group">
-								<label>Biography</label>
-								<textarea id="setBio" rows="3"></textarea>
-							</div>
+                <!-- Settings Tab -->
+                <div id="settingsTab" class="tab-content">
+                    <div class="card">
+                        <h2>Profile Settings</h2>
+                        <form id="settingsProfileForm">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" id="setUsername" required />
+                            </div>
 
-							<div class="form-group">
-								<label>Pronouns</label>
-								<input type="text" id="setPronouns" />
-							</div>
+                            <div class="form-group">
+                                <label>Biography</label>
+                                <textarea id="setBio" rows="3"></textarea>
+                            </div>
 
-							<div class="form-group">
-								<label>Age</label>
-								<input type="number" id="setAge" />
-							</div>
+                            <div class="form-group">
+                                <label>Pronouns</label>
+                                <input type="text" id="setPronouns" />
+                            </div>
 
-							<div class="form-group">
-								<label>Location</label>
-								<input type="text" id="setLocation" />
-							</div>
+                            <div class="form-group">
+                                <label>Age</label>
+                                <input type="number" id="setAge" />
+                            </div>
 
-							<div class="form-group">
-								<label>Privacy Mode</label>
-								<select id="setPrivacy">
-									<option value="public">Public</option>
-									<option value="private">Private</option>
-								</select>
-							</div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" id="setLocation" />
+                            </div>
 
-							<div
-								id="privatePassGroup"
-								class="form-group hidden"
-							>
-								<label>Private Password</label>
-								<input
-									type="password"
-									id="setPrivatePassword"
-									autocomplete="new-password"
-									placeholder="Leave blank to keep existing password"
-								/>
-								<small
-									style="
-										color: var(--text-light);
-										display: block;
-										margin-top: 5px;
-									"
-								>
-									Only required if changing password. Leave
-									blank to keep current.
-								</small>
-							</div>
-						</form>
-					</div>
+                            <div class="form-group">
+                                <label>Privacy Mode</label>
+                                <select id="setPrivacy">
+                                    <option value="public">Public</option>
+                                    <option value="private">Private</option>
+                                </select>
+                            </div>
 
-					<div class="card">
-						<h2>Mail Server Settings</h2>
-						<form id="settingsMailForm">
-							<div class="form-group">
-								<label>SMTP Host</label>
-								<input type="text" id="smtpHost" />
-							</div>
-							<div class="form-group">
-								<label>SMTP Port</label>
-								<input
-									type="number"
-									id="smtpPort"
-									placeholder="587"
-								/>
-							</div>
-							<div class="form-group">
-								<label>
-									<input type="checkbox" id="smtpSecure" />
-									Use SSL/TLS
-								</label>
-							</div>
-							<div class="form-group">
-								<label>SMTP User</label>
-								<input type="text" id="smtpUser" />
-							</div>
-							<div class="form-group">
-								<label>SMTP Password</label>
-								<input
-									type="password"
-									id="smtpPass"
-									autocomplete="new-password"
-								/>
-							</div>
-							<div class="form-group">
-								<label>From Email</label>
-								<input type="text" id="fromEmail" />
-							</div>
-							<div class="form-group">
-								<label>From Name</label>
-								<input type="text" id="fromName" />
-							</div>
-						</form>
-					</div>
+                            <div
+                                id="privatePassGroup"
+                                class="form-group hidden"
+                            >
+                                <label>Private Password</label>
+                                <input
+                                    type="password"
+                                    id="setPrivatePassword"
+                                    autocomplete="new-password"
+                                    placeholder="Leave blank to keep existing password"
+                                />
+                                <small
+                                    style="
+                                        color: var(--text-light);
+                                        display: block;
+                                        margin-top: 5px;
+                                    "
+                                >
+                                    Only required if changing password. Leave
+                                    blank to keep current.
+                                </small>
+                            </div>
+                        </form>
+                    </div>
 
-					<div class="flex gap-10 mt-20">
-						<button id="saveSettingsButton" class="btn">
-							Save Settings
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+                    <div class="card">
+                        <h2>Mail Server Settings</h2>
+                        <form id="settingsMailForm">
+                            <div class="form-group">
+                                <label>SMTP Host</label>
+                                <input type="text" id="smtpHost" />
+                            </div>
+                            <div class="form-group">
+                                <label>SMTP Port</label>
+                                <input
+                                    type="number"
+                                    id="smtpPort"
+                                    placeholder="587"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="smtpSecure" />
+                                    Use SSL/TLS
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>SMTP User</label>
+                                <input type="text" id="smtpUser" />
+                            </div>
+                            <div class="form-group">
+                                <label>SMTP Password</label>
+                                <input
+                                    type="password"
+                                    id="smtpPass"
+                                    autocomplete="new-password"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label>From Email</label>
+                                <input type="text" id="fromEmail" />
+                            </div>
+                            <div class="form-group">
+                                <label>From Name</label>
+                                <input type="text" id="fromName" />
+                            </div>
+                        </form>
+                    </div>
 
-		<script type="module" src="/js/admin.js"></script>
-	</body>
+                    <div class="flex gap-10 mt-20">
+                        <button id="saveSettingsButton" class="btn">
+                            Save Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="/js/admin.js"></script>
+    </body>
 </html>

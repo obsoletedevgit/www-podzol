@@ -119,10 +119,23 @@ function displayPosts(posts) {
           }
           ${displayPostImages(post.images)}
           ${displayPostLink(post)}
+		  <div id="comments-${post.id}" class="comments-section mt-20">
+  <form class="comment-form" data-post-id="${post.id}">
+    <input type="text" name="name" placeholder="Your name" required style="margin-bottom:8px;">
+    <textarea name="content" rows="3" placeholder="Write a comment..." required></textarea>
+    <button type="submit" class="btn">Send</button>
+  </form>
+</div>
         </div>
       `;
         })
         .join("");
+
+    posts.forEach((p) => {
+        const el = document.getElementById(`comments-${p.id}`);
+        loadComments(p.id, el);
+        setupCommentForm(p.id, el);
+    });
 
     enableLightbox();
 }
@@ -239,3 +252,85 @@ function enableLightbox() {
         img.src = "";
     });
 }
+
+async function loadComments(postId, container) {
+    try {
+        const comments = await fetchAPI(`/posts/${postId}/comments`);
+        if (!comments.length) {
+            container.innerHTML += `<p style="color: var(--text-light); font-size:14px;">No comments yet.</p>`;
+            return;
+        }
+
+        const commentHtml = comments
+            .map(
+                (c) => `
+      <div class="comment-item">
+        <strong>${escapeHtml(c.name)}</strong>
+        <p>${escapeHtml(c.content)}</p>
+        <small>${formatDate(c.created_at)}</small>
+      </div>
+    `
+            )
+            .join("");
+
+        container.innerHTML += commentHtml;
+    } catch {
+        container.innerHTML += `<p style="color: var(--text-light)">Failed to load comments</p>`;
+    }
+}
+
+function setupCommentForm(postId, container) {
+    const form = document.createElement("form");
+    form.className = "comment-form mt-20";
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // stops the default page reload
+        const name = form.name.value.trim();
+        const content = form.content.value.trim();
+
+        console.log("Submitting comment:", { name, content });
+
+        if (!name || !content) return;
+
+        try {
+            await fetchAPI(`/posts/${postId}/comments`, {
+                method: "POST",
+                body: JSON.stringify({ name, content }),
+            });
+            showSuccess("Comment submitted!");
+            form.reset();
+            container.innerHTML = ""; // reload
+            loadComments(postId, container);
+        } catch {
+            showError("Failed to add comment");
+        }
+    });
+
+    container.appendChild(form);
+}
+
+document.body.addEventListener("submit", async (e) => {
+    const form = e.target.closest(".comment-form");
+    if (!form) return; // only handle comment forms
+    e.preventDefault();
+
+    const postId = form.dataset.postId;
+    const name = form.querySelector("input[name='name']").value.trim();
+    const content = form.querySelector("textarea[name='content']").value.trim();
+
+    if (!name || !content) return;
+
+    try {
+        await fetchAPI(`/posts/${postId}/comments`, {
+            method: "POST",
+            body: JSON.stringify({ name, content }),
+        });
+        showSuccess("Comment submitted!");
+        form.reset();
+        const container = form.closest(".comments-section");
+        loadComments(postId, container);
+    } catch (err) {
+        console.error("comment error", err);
+        showError("Failed to add comment");
+    }
+});
